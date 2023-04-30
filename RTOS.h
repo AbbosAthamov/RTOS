@@ -20,14 +20,21 @@ extern "C" {
 #define MAX_PRIORITY 10
 #endif
 
+enum status {
+  osOK = 0,
+  osNotEnoughPlace,
+  osNonExistentTask,
+};
+
+typedef uint8_t osStatus;
 typedef void (*callbackFunc)();
 
 typedef struct Task {
-	bool recurring;
-	uint32_t interval;
-	uint32_t ticks;
-	uint8_t priority;
-	callbackFunc cbFunc;
+  bool recurring;
+  uint32_t interval;
+  uint32_t ticks;
+  uint8_t priority;
+  callbackFunc cbFunc;
 } Task;
 
 Task Tasks[TASK_LIMIT];
